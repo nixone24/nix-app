@@ -18,19 +18,43 @@
 
           <form action="" method="POST" class="form">
             @csrf
+            @error('email')
+                <div class="alert alert-danger text-center" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
+            @error('password')
+                <div class="alert alert-danger text-center" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
+
+
             <div>
-                 <input type="email" class="form-control mb-3 rounded-pill" name="email" value="{{old('email')}}" placeholder="E-mail"  required/>
+                 <input type="email" id="email" class="form-control mb-3 rounded-pill @error('email')is-invalid
+
+                 @enderror" name="email" value="{{old('email')}}" placeholder="E-mail"  required autocomplete="email"/>
                  <small class="text-danger fw-old" id="error-login-email"></small>
             </div>
             <div>
-                 <input type="password" class="form-control mb-3 rounded-pill" name="password" value="{{old('password')}}" placeholder="Mot de passe"  required/>
+                 <input type="password" class="form-control mb-2 rounded-pill @error('password')is-invalid
+
+                 @enderror" name="password" value="{{old('password')}}" placeholder="Mot de passe"  required/>
                  <small class="text-danger fw-old"></small>
             </div>
 
-            <div class="d-grid gap-2 col-12 mx-auto text-center">
-              <button type="submit" class="btn btn-success rounded-pill px-4">Connexion →</button><br>
-              <span class="">Je suis nouveau <a href="{{route('register')}}">Register</a></span>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
+            <label class="form-check-label mb-3" for="checkNativeSwitch"> Remember me  <a class="col-md-6 text-end" href="">Forgot password</a></label>
+
+        </div>
+         <div class="d-grid gap-2 col-12 mx-auto text-center">
+              <button type="submit" class="btn btn-success rounded-pill px-4">Connexion →</button>
+              <p class="text-start text-md-center mb-4">Je suis nouveau <a href="{{route('register')}}">je m'inscris</a></p>
+
             </div>
+
+
           </form>
 
         </div>
