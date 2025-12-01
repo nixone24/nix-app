@@ -2,5 +2,7 @@
 @section('title', 'Medecin')
 @section('content')
 
-<h1>Service</h1>
+<div class= "container">
+    <h1>Medecin</h1>
+</div>
 @endsection
